@@ -54,8 +54,13 @@ public class HdfsFileSystemView implements FileSystemView {
 		this.rootDir = rootDir;
 
 		this.user = user;
-
-
+                
+                this.currDir = rootDir;
+//                System.out.println("--Create HdfsFileSystemView");
+//                System.out.println("--rootDir:"+this.rootDir);
+//                System.out.println("--currDir:"+this.currDir);
+          
+                
 	}
 
 	/**
@@ -63,6 +68,7 @@ public class HdfsFileSystemView implements FileSystemView {
 	 * user.
 	 */
 	public FileObject getHomeDirectory() {
+         System.out.println("HdfsFileSystemView.getHomeDirectory()");
 		return new HdfsFileObject("/", user);
 	}
 
@@ -70,6 +76,7 @@ public class HdfsFileSystemView implements FileSystemView {
 	 * Get the current directory.
 	 */
 	public FileObject getCurrentDirectory() {
+            System.out.println("HdfsFileSystemView.getCurrentDirectory():"+currDir);
 		return new HdfsFileObject(currDir, user);
 	}
 
